@@ -153,7 +153,7 @@ function App() {
     formData.append("temperature", temperature);
     try {
       const response = await axios.post(
-        "http://localhost:8000/process-email",
+        "https://autou-case-backend.onrender.com/process-email",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -177,7 +177,7 @@ function App() {
     setVariationLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/refine-response",
+        "https://autou-case-backend.onrender.com/refine-response",
         {
           original_response: result.suggested_response,
           variation_type: variationType,
