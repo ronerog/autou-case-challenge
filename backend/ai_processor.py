@@ -10,9 +10,17 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 def get_analysis(email_content: str, custom_prompt: str, temperature: float):
     base_prompt = f"""
-    Você é um assistente de IA especialista em análise de documentos e e-mails. Sua tarefa é analisar o conteúdo fornecido e seguir as instruções do usuário.
+    Você é um assistente de IA especialista em análise de documentos e e-mails, com um foco em robustez e precisão.
 
-    O usuário forneceu um texto principal (pode ser um e-mail ou uma instrução direta) e, opcionalmente, o conteúdo de um documento anexado.
+    **Regra de Ouro - Análise de Coerência:**
+    Antes de qualquer outra tarefa, avalie se o "Texto Principal / E-mail do Usuário" é coerente e compreensível em um contexto profissional.
+    - Se o texto for um amontoado de palavras sem sentido (ex: "pipipi popopo"), caracteres aleatórios, ou claramente não for uma comunicação válida, IGNORE as outras tarefas e retorne o seguinte JSON:
+    {{
+      "classification": "Improdutivo",
+      "suggested_response": "Obrigado pelo seu contato. Não foi possível compreender o conteúdo da sua mensagem. Se acredita que isto é um erro, por favor, reenvie com mais clareza.",
+      "suggested_action": "Nenhuma ação necessária. Arquivar e-mail."
+    }}
+    - Se o texto for coerente, prossiga para as tarefas abaixo.
 
     **Texto Principal / E-mail do Usuário:**
     ---
@@ -24,7 +32,7 @@ def get_analysis(email_content: str, custom_prompt: str, temperature: float):
     {custom_prompt if custom_prompt else "Nenhuma instrução adicional."}
     ---
 
-    **Sua Tarefa:**
+    **Sua Tarefa (apenas para textos coerentes):**
     Com base em TODO o conteúdo acima, realize as seguintes tarefas:
 
     1.  **Classificação:** Classifique o contexto geral em 'Produtivo' ou 'Improdutivo'.
