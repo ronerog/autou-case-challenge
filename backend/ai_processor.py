@@ -28,7 +28,7 @@ def get_analysis(email_content: str, custom_prompt: str, temperature: float):
     Com base em TODO o conteúdo acima, realize as seguintes tarefas:
 
     1.  **Classificação:** Classifique o contexto geral em 'Produtivo' ou 'Improdutivo'.
-    2.  **Geração de Resposta:** Crie uma resposta que atenda ao que foi solicitado no texto principal, utilizando as informações do documento anexado se necessário.
+    2.  **Geração de Resposta:** Crie uma resposta que atenda ao que foi solicitado no texto principal, interpretando as informações do documento anexado se necessário.
     3.  **Extração de Ação:** Identifique a próxima ação concreta sugerida no texto. Se não houver, retorne "Nenhuma sugestão de ação".
 
     **Formato de Saída Obrigatório (JSON):**
