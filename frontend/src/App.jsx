@@ -215,7 +215,7 @@ function App() {
             Analisador de Emails com IA
           </h1>
           <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
-            Do e-mail à ação em segundos."
+            Do e-mail à ação em segundos.
           </p>
           <div className="absolute top-0 right-0">
             <button
