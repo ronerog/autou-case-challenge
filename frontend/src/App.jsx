@@ -210,20 +210,25 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <header className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-indigo-700 dark:text-indigo-400">
-            Analisador de Emails com IA - AutoU
+        <header className="relative text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-indigo-700 dark:text-indigo-400 tracking-tight">
+            Analisador de Emails com IA
           </h1>
-          <button
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400"
-          >
-            {isDarkMode ? <SunIcon /> : <MoonIcon />}
-          </button>
+          <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+            Do e-mail à ação em segundos."
+          </p>
+          <div className="absolute top-0 right-0">
+            <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-indigo-500"
+            >
+              {isDarkMode ? <SunIcon /> : <MoonIcon />}
+            </button>
+          </div>
         </header>
 
         <main className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
-          <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-lg">
+          <div className="bg-white dark:bg-gray-800/50 p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
             <form onSubmit={handleSubmit} className="space-y-6">
               <textarea
                 value={emailText}
@@ -380,7 +385,7 @@ function App() {
             </form>
           </div>
 
-          <div className="lg:sticky top-8 h-fit space-y-6">
+          <div className="mt-8 lg:mt-0 lg:sticky top-8 h-fit space-y-6">
             {error && (
               <div
                 className="bg-red-100 dark:bg-red-900/50 border-l-4 border-red-500 text-red-700 dark:text-red-200 p-4 rounded-r-lg"
@@ -393,23 +398,23 @@ function App() {
 
             {loading && (
               <div className="space-y-6">
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg animate-pulse">
-                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
-                  <div className="h-8 mt-2 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-lg animate-pulse">
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/3"></div>
+                  <div className="h-8 mt-3 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg animate-pulse">
-                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
-                  <div className="h-6 mt-2 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-lg animate-pulse">
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/4"></div>
+                  <div className="h-6 mt-3 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg animate-pulse">
-                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
-                  <div className="h-20 mt-2 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-lg animate-pulse">
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/3"></div>
+                  <div className="h-20 mt-3 bg-gray-300 dark:bg-gray-700 rounded"></div>
                 </div>
               </div>
             )}
 
             {!result && !loading && !error && (
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg h-full flex flex-col justify-center items-center text-center">
+              <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-8 rounded-2xl shadow-lg h-full flex flex-col justify-center items-center text-center">
                 <svg
                   className="w-16 h-16 text-gray-300 dark:text-gray-600"
                   fill="none"
@@ -436,7 +441,7 @@ function App() {
               <div className="space-y-6">
                 {result.suggested_action &&
                   result.suggested_action !== "Nenhuma sugestão de ação" && (
-                    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                    <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-lg">
                       <h3 className="text-base sm:text-lg font-semibold text-blue-800 dark:text-blue-300 mb-2">
                         ⚡ Próxima Ação Sugerida:
                       </h3>
@@ -445,7 +450,7 @@ function App() {
                       </p>
                     </div>
                   )}
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-lg">
                   <h3 className="text-lg sm:text-xl font-semibold mb-3">
                     Classificação:
                   </h3>
@@ -459,7 +464,7 @@ function App() {
                     {result.classification}
                   </p>
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-lg">
                   <div className="flex flex-wrap gap-2 justify-between items-center mb-3">
                     <h3 className="text-lg sm:text-xl font-semibold">
                       Resposta Sugerida:
