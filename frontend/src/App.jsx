@@ -211,8 +211,8 @@ function App() {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <header className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-indigo-700 dark:text-indigo-400">
-            Analisador de Emails com IA
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-indigo-700 dark:text-indigo-400">
+            Analisador de Emails com IA - AutoU
           </h1>
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
