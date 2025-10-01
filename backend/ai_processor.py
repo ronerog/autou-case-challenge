@@ -59,6 +59,7 @@ def get_analysis(email_content: str, custom_prompt: str, temperature: float):
         return result_json
     except Exception as e:
         print(f"Erro na API do Gemini (get_analysis): {e}")
+        
         return {"error": "Falha na análise inicial do e-mail."}
 
 def refine_response(original_text: str, variation_type: str):
